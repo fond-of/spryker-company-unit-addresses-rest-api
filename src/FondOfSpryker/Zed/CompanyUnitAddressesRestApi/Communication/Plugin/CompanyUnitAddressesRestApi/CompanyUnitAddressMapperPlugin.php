@@ -27,7 +27,7 @@ class CompanyUnitAddressMapperPlugin extends AbstractPlugin implements CompanyUn
         RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer,
         CompanyUnitAddressTransfer $companyUnitAddressTransfer
     ): CompanyUnitAddressTransfer {
-        return $this->getFacade()->mapCompanyToCompanyUnitAddress(
+        return $this->getFacade()->mapToCompanyUnitAddress(
             $restCompanyUnitAddressesRequestAttributesTransfer,
             $companyUnitAddressTransfer
         );

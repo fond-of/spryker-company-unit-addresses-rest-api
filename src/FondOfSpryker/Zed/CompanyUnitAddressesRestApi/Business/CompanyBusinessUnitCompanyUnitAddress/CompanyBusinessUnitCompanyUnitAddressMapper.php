@@ -3,7 +3,6 @@
 namespace FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyBusinessUnitCompanyUnitAddress;
 
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyBusinessUnitsRestApiFacadeInterface;
-use Generated\Shared\Transfer\CompanyBusinessUnitCollectionTransfer;
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer;
 
@@ -41,11 +40,7 @@ class CompanyBusinessUnitCompanyUnitAddressMapper implements CompanyBusinessUnit
         $companyBusinessUnitTransfer = $this->companyBusinessUnitsRestApiFacade->findByExternalReference($companyBusinessUnit->getExternalReference());
 
         if ($companyBusinessUnitTransfer !== null) {
-            $companyBusinessUnits = new CompanyBusinessUnitCollectionTransfer();
-            $companyBusinessUnits->addCompanyBusinessUnit($companyBusinessUnitTransfer);
-
-            $companyUnitAddressTransfer->setCompanyBusinessUnits($companyBusinessUnits)
-                ->setFkCompanyBusinessUnit($companyBusinessUnitTransfer->getIdCompanyBusinessUnit());
+            $companyUnitAddressTransfer->setFkCompanyBusinessUnit($companyBusinessUnitTransfer->getIdCompanyBusinessUnit());
         }
 
         return $companyUnitAddressTransfer;

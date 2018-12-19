@@ -19,8 +19,7 @@ class CompanyUnitAddressesResourceRoutePlugin extends AbstractPlugin implements 
      *
      * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRouteCollectionInterface
      */
-    public function configure(ResourceRouteCollectionInterface $resourceRouteCollection
-    ): ResourceRouteCollectionInterface
+    public function configure(ResourceRouteCollectionInterface $resourceRouteCollection): ResourceRouteCollectionInterface
     {
         $resourceRouteCollection
             ->addPost(CompanyUnitAddressesRestApiConfig::ACTION_COMPANY_UNIT_ADDRESSES_POST, true);

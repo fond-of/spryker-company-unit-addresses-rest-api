@@ -44,4 +44,8 @@
         <property name="errors" type="RestCompanyUnitAddressesError[]" singular="error" />
         <property name="restCompanyUnitAddressesResponseAttributes" type="RestCompanyUnitAddressesResponseAttributes" />
     </transfer>
+
+    <transfer name="CompanyUnitAddress">
+        <property name="uuid" type="string"/>
+    </transfer>
 </transfers>

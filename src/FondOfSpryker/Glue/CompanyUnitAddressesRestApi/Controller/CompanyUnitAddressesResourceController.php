@@ -14,12 +14,12 @@ class CompanyUnitAddressesResourceController extends AbstractController
 {
     /**
      * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestCompanyBusinessUnitsRequestAttributesTransfer $restCompanyBusinessUnitsRequestAttributesTransfer
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    public function postAction(RestRequestInterface $restRequest, RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyBusinessUnitsRequestAttributesTransfer): RestResponseInterface
+    public function postAction(RestRequestInterface $restRequest, RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer): RestResponseInterface
     {
-        return $this->getFactory()->createCompanyUnitAddressesWriter()->createCompanyBusinessUnit($restRequest, $restCompanyBusinessUnitsRequestAttributesTransfer);
+        return $this->getFactory()->createCompanyUnitAddressesWriter()->createCompanyUnitAddress($restRequest, $restCompanyUnitAddressesRequestAttributesTransfer);
     }
 }

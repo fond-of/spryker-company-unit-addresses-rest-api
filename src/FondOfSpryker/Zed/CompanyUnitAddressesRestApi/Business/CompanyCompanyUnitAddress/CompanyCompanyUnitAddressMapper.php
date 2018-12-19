@@ -40,8 +40,7 @@ class CompanyCompanyUnitAddressMapper implements CompanyCompanyUnitAddressMapper
         $companyTransfer = $this->companiesRestApiFacade->findByExternalReference($company->getExternalReference());
 
         if ($companyTransfer !== null) {
-            $companyUnitAddressTransfer->setFkCompany($companyTransfer->getIdCompany())
-                ->setCompany($companyTransfer);
+            $companyUnitAddressTransfer->setFkCompany($companyTransfer->getIdCompany());
         }
 
         return $companyUnitAddressTransfer;
