@@ -53,6 +53,10 @@ class CompanyUnitAddressMapper implements CompanyUnitAddressMapperInterface
             $companyUnitAddressTransfer->setComment($restCompanyUnitAddressesRequestAttributesTransfer->getComment());
         }
 
+        if ($restCompanyUnitAddressesRequestAttributesTransfer->getIsDefaultBillingAddress() !== null) {
+            $companyUnitAddressTransfer->setIsDefaultBilling($restCompanyUnitAddressesRequestAttributesTransfer->getIsDefaultBillingAddress());
+        }
+
         return $companyUnitAddressTransfer;
     }
 }
