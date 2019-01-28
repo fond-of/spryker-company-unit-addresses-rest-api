@@ -12,12 +12,10 @@ use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesResponseAttributesTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer;
 use Propel\Runtime\Exception\PropelException;
-use Spryker\Shared\Log\LoggerTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class CompanyUnitAddressWriter implements CompanyUnitAddressWriterInterface
 {
-    use LoggerTrait;
     /**
      * @var \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
      */

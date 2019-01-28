@@ -17,44 +17,20 @@ class CompanyUnitAddressMapper implements CompanyUnitAddressMapperInterface
         RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer,
         CompanyUnitAddressTransfer $companyUnitAddressTransfer
     ): CompanyUnitAddressTransfer {
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getExternalReference() !== null) {
-            $companyUnitAddressTransfer->setExternalReference($restCompanyUnitAddressesRequestAttributesTransfer->getExternalReference());
-        }
+        $properties = $restCompanyUnitAddressesRequestAttributesTransfer->toArray(true, true);
 
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getAddress1() !== null) {
-            $companyUnitAddressTransfer->setAddress1($restCompanyUnitAddressesRequestAttributesTransfer->getAddress1());
-        }
+        foreach ($properties as $key => $value) {
+            if ($value === null || $key === 'company' || $key === 'companyBusinessUnit') {
+                continue;
+            }
 
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getAddress2() !== null) {
-            $companyUnitAddressTransfer->setAddress2($restCompanyUnitAddressesRequestAttributesTransfer->getAddress2());
-        }
+            $setterMethod = sprintf('set%s', ucfirst($key));
 
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getAddress3() !== null) {
-            $companyUnitAddressTransfer->setAddress3($restCompanyUnitAddressesRequestAttributesTransfer->getAddress3());
-        }
+            if ($key === 'country') {
+                $setterMethod = sprintf('set%s', ucfirst(CompanyUnitAddressTransfer::ISO2_CODE));
+            }
 
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getCity() !== null) {
-            $companyUnitAddressTransfer->setCity($restCompanyUnitAddressesRequestAttributesTransfer->getCity());
-        }
-
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getZipCode() !== null) {
-            $companyUnitAddressTransfer->setZipCode($restCompanyUnitAddressesRequestAttributesTransfer->getZipCode());
-        }
-
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getCountry() !== null) {
-            $companyUnitAddressTransfer->setIso2Code($restCompanyUnitAddressesRequestAttributesTransfer->getCountry());
-        }
-
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getPhone() !== null) {
-            $companyUnitAddressTransfer->setPhone($restCompanyUnitAddressesRequestAttributesTransfer->getPhone());
-        }
-
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getComment() !== null) {
-            $companyUnitAddressTransfer->setComment($restCompanyUnitAddressesRequestAttributesTransfer->getComment());
-        }
-
-        if ($restCompanyUnitAddressesRequestAttributesTransfer->getIsDefaultBillingAddress() !== null) {
-            $companyUnitAddressTransfer->setIsDefaultBilling($restCompanyUnitAddressesRequestAttributesTransfer->getIsDefaultBillingAddress());
+            $companyUnitAddressTransfer->$setterMethod($value);
         }
 
         return $companyUnitAddressTransfer;

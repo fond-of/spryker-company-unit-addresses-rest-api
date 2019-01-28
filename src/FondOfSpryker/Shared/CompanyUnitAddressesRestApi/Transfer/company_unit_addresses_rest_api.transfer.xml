@@ -12,6 +12,8 @@
         <property name="externalReference" type="string"/>
         <property name="company" type="RestCompany"/>
         <property name="companyBusinessUnit" type="RestCompanyBusinessUnit"/>
+        <property name="name1" type="string"/>
+        <property name="name2" type="string"/>
         <property name="address1" type="string"/>
         <property name="address2" type="string"/>
         <property name="address3" type="string"/>
@@ -19,12 +21,16 @@
         <property name="zipCode" type="string"/>
         <property name="country" type="string"/>
         <property name="phone" type="string"/>
+        <property name="fax" type="string"/>
         <property name="comment" type="string"/>
+        <property name="gln" type="string"/>
         <property name="isDefaultBillingAddress" type="bool" />
     </transfer>
 
     <transfer name="RestCompanyUnitAddressesResponseAttributes">
         <property name="externalReference" type="string"/>
+        <property name="name1" type="string"/>
+        <property name="name2" type="string"/>
         <property name="address1" type="string"/>
         <property name="address2" type="string"/>
         <property name="address3" type="string"/>
@@ -32,7 +38,9 @@
         <property name="zipCode" type="string"/>
         <property name="country" type="string"/>
         <property name="phone" type="string"/>
+        <property name="fax" type="string"/>
         <property name="comment" type="string"/>
+        <property name="gln" type="string"/>
     </transfer>
 
     <transfer name="RestCompanyUnitAddressesError">
