@@ -27,7 +27,7 @@ interface CompanyUnitAddressesRestApiClientInterface
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
      */
-    public function findCompanyBusinessUnitByExternalReference(
+    public function findCompanyUnitAddressByExternalReference(
         RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
     ): RestCompanyUnitAddressesResponseTransfer;
 

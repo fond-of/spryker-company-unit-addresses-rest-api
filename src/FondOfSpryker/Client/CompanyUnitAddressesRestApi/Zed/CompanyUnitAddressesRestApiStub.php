@@ -60,7 +60,8 @@ class CompanyUnitAddressesRestApiStub implements CompanyUnitAddressesRestApiStub
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
      */
-    public function update(RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+    public function update(
+        RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
     ): RestCompanyUnitAddressesResponseTransfer {
         /** @var \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer $restCompanyUnitAddressesResponseTransfer */
         $restCompanyUnitAddressesResponseTransfer = $this->zedRequestClient->call(

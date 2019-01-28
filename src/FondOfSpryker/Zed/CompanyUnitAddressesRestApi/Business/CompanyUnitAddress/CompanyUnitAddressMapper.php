@@ -17,6 +17,10 @@ class CompanyUnitAddressMapper implements CompanyUnitAddressMapperInterface
         RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer,
         CompanyUnitAddressTransfer $companyUnitAddressTransfer
     ): CompanyUnitAddressTransfer {
+        if ($restCompanyUnitAddressesRequestAttributesTransfer->getExternalReference() !== null) {
+            $companyUnitAddressTransfer->setExternalReference($restCompanyUnitAddressesRequestAttributesTransfer->getExternalReference());
+        }
+
         if ($restCompanyUnitAddressesRequestAttributesTransfer->getAddress1() !== null) {
             $companyUnitAddressTransfer->setAddress1($restCompanyUnitAddressesRequestAttributesTransfer->getAddress1());
         }

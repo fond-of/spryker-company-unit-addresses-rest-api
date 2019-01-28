@@ -35,10 +35,12 @@ class CompanyUnitAddressesRestApiClient extends AbstractClient implements Compan
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
      */
-    public function findCompanyBusinessUnitByExternalReference(
+    public function findCompanyUnitAddressByExternalReference(
         RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
     ): RestCompanyUnitAddressesResponseTransfer {
-        // TODO: Implement findCompanyBusinessUnitByExternalReference() method.
+        return $this->getFactory()
+            ->createZedCompanyUnitAddressesRestApiStub()
+            ->findCompanyUnitAddressByExternalReference($restCompanyUnitAddressesRequestAttributesTransfer);
     }
 
     /**
@@ -52,7 +54,10 @@ class CompanyUnitAddressesRestApiClient extends AbstractClient implements Compan
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
      */
     public function update(RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
-    ): RestCompanyUnitAddressesResponseTransfer {
-        // TODO: Implement update() method.
+    ): RestCompanyUnitAddressesResponseTransfer
+    {
+        return $this->getFactory()
+            ->createZedCompanyUnitAddressesRestApiStub()
+            ->update($restCompanyUnitAddressesRequestTransfer);
     }
 }
