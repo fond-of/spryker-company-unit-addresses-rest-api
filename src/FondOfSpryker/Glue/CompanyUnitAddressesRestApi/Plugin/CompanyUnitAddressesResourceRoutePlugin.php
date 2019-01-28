@@ -22,6 +22,8 @@ class CompanyUnitAddressesResourceRoutePlugin extends AbstractPlugin implements 
     public function configure(ResourceRouteCollectionInterface $resourceRouteCollection): ResourceRouteCollectionInterface
     {
         $resourceRouteCollection
+            ->addPost(CompanyUnitAddressesRestApiConfig::ACTION_COMPANY_UNIT_ADDRESSES_GET, true)
+            ->addPost(CompanyUnitAddressesRestApiConfig::ACTION_COMPANY_UNIT_ADDRESSES_PATCH, true)
             ->addPost(CompanyUnitAddressesRestApiConfig::ACTION_COMPANY_UNIT_ADDRESSES_POST, true);
 
         return $resourceRouteCollection;

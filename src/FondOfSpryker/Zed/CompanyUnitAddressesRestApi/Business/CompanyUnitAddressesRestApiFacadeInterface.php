@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business;
 
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer;
+use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer;
 
 interface CompanyUnitAddressesRestApiFacadeInterface
@@ -69,4 +70,22 @@ interface CompanyUnitAddressesRestApiFacadeInterface
         RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer,
         CompanyUnitAddressTransfer $companyUnitAddressTransfer
     ): CompanyUnitAddressTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function findCompanyUnitAddressByExternalReference(
+        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+    ): RestCompanyUnitAddressesResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function update(
+        RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+    ): RestCompanyUnitAddressesResponseTransfer;
 }

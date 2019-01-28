@@ -3,6 +3,7 @@
 namespace FondOfSpryker\Client\CompanyUnitAddressesRestApi;
 
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer;
+use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer;
 use Spryker\Client\Kernel\AbstractClient;
 
@@ -22,5 +23,36 @@ class CompanyUnitAddressesRestApiClient extends AbstractClient implements Compan
         return $this->getFactory()
             ->createZedCompanyUnitAddressesRestApiStub()
             ->create($restCompanyUnitAddressesRequestAttributesTransfer);
+    }
+
+    /**
+     * Specification:
+     *  - Retrieve a company unit address by CompanyUnitAddressTransfer::externalReference in the transfer
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function findCompanyBusinessUnitByExternalReference(
+        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+    ): RestCompanyUnitAddressesResponseTransfer {
+        // TODO: Implement findCompanyBusinessUnitByExternalReference() method.
+    }
+
+    /**
+     * Specification:
+     *  - Update a company unit address from RestCompanyUnitAddressesRequestTransfer
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function update(RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+    ): RestCompanyUnitAddressesResponseTransfer {
+        // TODO: Implement update() method.
     }
 }

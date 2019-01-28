@@ -6,13 +6,9 @@
           package="src.Orm.Zed.CompanyUnitAddress.Persistence">
 
     <table name="spy_company_unit_address" phpName="SpyCompanyUnitAddress">
-        <behavior name="uuid">
-            <parameter name="key_prefix" value="company_unit_address"/>
-            <parameter name="key_columns" value="id_company_unit_address"/>
-        </behavior>
-        <column name="uuid" required="false" type="VARCHAR" size="255"/>
-        <unique name="spy_company_unit_address-unique-uuid">
-            <unique-column name="uuid"/>
+        <column name="external_reference" type="VARCHAR" size="255" required="true"/>
+        <unique name="spy_company_unit_address-unique-external_reference">
+            <unique-column name="external_reference"/>
         </unique>
     </table>
 

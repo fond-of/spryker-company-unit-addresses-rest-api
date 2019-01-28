@@ -6,24 +6,23 @@ use FondOfSpryker\Client\CompanyUnitAddressesRestApi\CompanyUnitAddressesRestApi
 use FondOfSpryker\Glue\CompanyUnitAddressesRestApi\CompanyUnitAddressesRestApiConfig;
 use FondOfSpryker\Glue\CompanyUnitAddressesRestApi\Processor\Validation\RestApiErrorInterface;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer;
-use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer;
 use Generated\Shared\Transfer\RestErrorMessageTransfer;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 
-class CompanyUnitAddressesWriter implements CompanyUnitAddressesWriterInterface
+class CompanyUnitAddressesReader implements CompanyUnitAddressesReaderInterface
 {
-    /**
-     * @var \FondOfSpryker\Client\CompanyUnitAddressesRestApi\CompanyUnitAddressesRestApiClientInterface
-     */
-    protected $companyUnitAddressesRestApiClient;
-
     /**
      * @var \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface
      */
     protected $restResourceBuilder;
+
+    /**
+     * @var \FondOfSpryker\Client\CompanyUnitAddressesRestApi\CompanyUnitAddressesRestApiClientInterface
+     */
+    protected $companyUnitAddressesRestApiClient;
 
     /**
      * @var \FondOfSpryker\Glue\CompanyUnitAddressesRestApi\Processor\Validation\RestApiErrorInterface
@@ -47,23 +46,28 @@ class CompanyUnitAddressesWriter implements CompanyUnitAddressesWriterInterface
 
     /**
      * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    public function createCompanyUnitAddress(
-        RestRequestInterface $restRequest,
-        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
-    ): RestResponseInterface {
-        $restCompanyUnitAddressesResponseTransfer = $this->companyUnitAddressesRestApiClient->create(
-            $restCompanyUnitAddressesRequestAttributesTransfer
-        );
+    public function findCompanyUnitAddressByExternalReference(RestRequestInterface $restRequest): RestResponseInterface
+    {
+        $restResponse = $this->restResourceBuilder->createRestResponse();
 
-        if (!$restCompanyUnitAddressesResponseTransfer->getIsSuccess()) {
-            return $this->createSaveCompanyUnitAddressFailedErrorResponse($restCompanyUnitAddressesResponseTransfer);
+        if (!$restRequest->getResource()->getId()) {
+            return $this->restApiError->addExternalReferenceMissingError($restResponse);
         }
 
-        return $this->createCompanyUnitAddressSavedResponse($restCompanyUnitAddressesResponseTransfer);
+        $restCompanyUnitAddressesRequestAttributesTransfer = new RestCompanyUnitAddressesRequestAttributesTransfer();
+        $restCompanyUnitAddressesRequestAttributesTransfer->setExternalReference($restRequest->getResource()->getId());
+
+        $restCompanyUnitAddressesResponseTransfer = $this->companyUnitAddressesRestApiClient
+            ->findCompanyUnitAddressByExternalReference($restCompanyUnitAddressesRequestAttributesTransfer);
+
+        if (!$restCompanyUnitAddressesResponseTransfer->getIsSuccess()) {
+            return $this->createLoadCompanyUnitAddressFailedErrorResponse($restCompanyUnitAddressesResponseTransfer);
+        }
+
+        return $this->createCompanyUnitAddressLoadedResponse($restCompanyUnitAddressesResponseTransfer);
     }
 
     /**
@@ -71,7 +75,7 @@ class CompanyUnitAddressesWriter implements CompanyUnitAddressesWriterInterface
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    protected function createSaveCompanyUnitAddressFailedErrorResponse(
+    protected function createLoadCompanyUnitAddressFailedErrorResponse(
         RestCompanyUnitAddressesResponseTransfer $restCompanyUnitAddressesResponseTransfer
     ): RestResponseInterface {
         $restResponse = $this->restResourceBuilder->createRestResponse();
@@ -91,7 +95,7 @@ class CompanyUnitAddressesWriter implements CompanyUnitAddressesWriterInterface
      *
      * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
      */
-    protected function createCompanyUnitAddressSavedResponse(
+    protected function createCompanyUnitAddressLoadedResponse(
         RestCompanyUnitAddressesResponseTransfer $restCompanyUnitAddressesResponseTransfer
     ): RestResponseInterface {
         $restCompanyUnitAddressesResponseAttributesTransfer = $restCompanyUnitAddressesResponseTransfer->getRestCompanyUnitAddressesResponseAttributes();
@@ -105,36 +109,5 @@ class CompanyUnitAddressesWriter implements CompanyUnitAddressesWriterInterface
         return $this->restResourceBuilder
             ->createRestResponse()
             ->addResource($restResource);
-    }
-
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
-    public function updateCompanyUnitAddress(
-        RestRequestInterface $restRequest,
-        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
-    ): RestResponseInterface {
-        $restResponse = $this->restResourceBuilder->createRestResponse();
-
-        if (!$restRequest->getResource()->getId()) {
-            return $this->restApiError->addExternalReferenceMissingError($restResponse);
-        }
-
-        $restCompanyUnitAddressesRequestTransfer = new RestCompanyUnitAddressesRequestTransfer();
-        $restCompanyUnitAddressesRequestTransfer->setId($restRequest->getResource()->getId())
-            ->setRestCompanyUnitAddressesRequestAttributes($restCompanyUnitAddressesRequestAttributesTransfer);
-
-        $restCompanyUnitAddressesResponseTransfer = $this->companyUnitAddressesRestApiClient->update(
-            $restCompanyUnitAddressesRequestTransfer
-        );
-
-        if (!$restCompanyUnitAddressesResponseTransfer->getIsSuccess()) {
-            return $this->createSaveCompanyUnitAddressFailedErrorResponse($restCompanyUnitAddressesResponseTransfer);
-        }
-
-        return $this->createCompanyUnitAddressSavedResponse($restCompanyUnitAddressesResponseTransfer);
     }
 }

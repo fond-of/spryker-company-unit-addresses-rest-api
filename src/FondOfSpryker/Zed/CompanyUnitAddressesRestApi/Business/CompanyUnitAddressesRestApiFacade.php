@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business;
 
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer;
+use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
@@ -94,5 +95,31 @@ class CompanyUnitAddressesRestApiFacade extends AbstractFacade implements Compan
                 $restCompanyUnitAddressesRequestAttributesTransfer,
                 $companyUnitAddressTransfer
             );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function findCompanyUnitAddressByExternalReference(
+        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+    ): RestCompanyUnitAddressesResponseTransfer {
+        return $this->getFactory()
+            ->createCompanyUnitAddressReader()
+            ->findCompanyUnitAddressByExternalReference($restCompanyUnitAddressesRequestAttributesTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function update(RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+    ): RestCompanyUnitAddressesResponseTransfer
+    {
+        return $this->getFactory()
+            ->createCompanyUnitAddressWriter()
+            ->update($restCompanyUnitAddressesRequestTransfer);
     }
 }

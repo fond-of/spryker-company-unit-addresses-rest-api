@@ -2,12 +2,14 @@
 <transfers xmlns="spryker:transfer-01"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
     <transfer name="RestCompanyUnitAddressesRequest">
         <property name="id" type="string" />
         <property name="restCompanyUnitAddressesRequestAttributes" type="RestCompanyUnitAddressesRequestAttributes" />
     </transfer>
 
     <transfer name="RestCompanyUnitAddressesRequestAttributes">
+        <property name="externalReference" type="string"/>
         <property name="company" type="RestCompany"/>
         <property name="companyBusinessUnit" type="RestCompanyBusinessUnit"/>
         <property name="address1" type="string"/>
@@ -18,10 +20,11 @@
         <property name="country" type="string"/>
         <property name="phone" type="string"/>
         <property name="comment" type="string"/>
+        <property name="isDefaultBillingAddress" type="bool" />
     </transfer>
 
     <transfer name="RestCompanyUnitAddressesResponseAttributes">
-        <property name="uuid" type="string"/>
+        <property name="externalReference" type="string"/>
         <property name="address1" type="string"/>
         <property name="address2" type="string"/>
         <property name="address3" type="string"/>
@@ -43,9 +46,5 @@
         <property name="isSuccess" type="bool" />
         <property name="errors" type="RestCompanyUnitAddressesError[]" singular="error" />
         <property name="restCompanyUnitAddressesResponseAttributes" type="RestCompanyUnitAddressesResponseAttributes" />
-    </transfer>
-
-    <transfer name="CompanyUnitAddress">
-        <property name="uuid" type="string"/>
     </transfer>
 </transfers>

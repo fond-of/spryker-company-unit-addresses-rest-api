@@ -13,4 +13,11 @@ interface CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
      * @return \Generated\Shared\Transfer\CompanyUnitAddressResponseTransfer
      */
     public function create(CompanyUnitAddressTransfer $companyUnitAddressTransfer): CompanyUnitAddressResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyUnitAddressResponseTransfer
+     */
+    public function update(CompanyUnitAddressTransfer $companyUnitAddressTransfer): CompanyUnitAddressResponseTransfer;
 }

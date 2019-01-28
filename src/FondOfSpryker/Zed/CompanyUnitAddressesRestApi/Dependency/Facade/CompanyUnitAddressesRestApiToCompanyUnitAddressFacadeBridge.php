@@ -30,4 +30,14 @@ class CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeBridge implements Com
     {
         return $this->companyUnitAddressFacade->create($companyUnitAddressTransfer);
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyUnitAddressResponseTransfer
+     */
+    public function update(CompanyUnitAddressTransfer $companyUnitAddressTransfer): CompanyUnitAddressResponseTransfer
+    {
+        return $this->companyUnitAddressFacade->update($companyUnitAddressTransfer);
+    }
 }
