@@ -12,10 +12,14 @@ use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\Co
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\CompanyUnitAddressReaderInterface;
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\CompanyUnitAddressWriter;
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\CompanyUnitAddressWriterInterface;
+use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\DefaultBillingAddressRemover;
+use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\DefaultBillingAddressRemoverInterface;
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\CompanyUnitAddressesRestApiDependencyProvider;
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompaniesRestApiFacadeInterface;
+use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyBusinessUnitFacadeInterface;
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyBusinessUnitsRestApiFacadeInterface;
 use FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface;
+use Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -74,6 +78,17 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\DefaultBillingAddressRemoverInterface
+     */
+    public function createDefaultBillingAddressRemover(): DefaultBillingAddressRemoverInterface
+    {
+        return new DefaultBillingAddressRemover(
+            $this->getCompanyBusinessUnitFacade(),
+            $this->getCompanyBusinessUnitPropelQuery()
+        );
+    }
+
+    /**
      * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
      */
     protected function getCompanyUnitAddressFacade(): CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
@@ -103,5 +118,21 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     protected function getCompanyBusinessUnitsRestApiFacade(): CompanyUnitAddressesRestApiToCompanyBusinessUnitsRestApiFacadeInterface
     {
         return $this->getProvidedDependency(CompanyUnitAddressesRestApiDependencyProvider::FACADE_COMPANY_BUSINESS_UNITS_REST_API);
+    }
+
+    /**
+     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyBusinessUnitFacadeInterface
+     */
+    protected function getCompanyBusinessUnitFacade(): CompanyUnitAddressesRestApiToCompanyBusinessUnitFacadeInterface
+    {
+        return $this->getProvidedDependency(CompanyUnitAddressesRestApiDependencyProvider::FACADE_COMPANY_BUSINESS_UNIT);
+    }
+
+    /**
+     * @return \Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery
+     */
+    protected function getCompanyBusinessUnitPropelQuery(): SpyCompanyBusinessUnitQuery
+    {
+        return $this->getProvidedDependency(CompanyUnitAddressesRestApiDependencyProvider::PROPEL_QUERY_COMPANY_BUSINESS_UNIT);
     }
 }

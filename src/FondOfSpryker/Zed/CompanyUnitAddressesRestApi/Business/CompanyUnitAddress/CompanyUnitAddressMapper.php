@@ -26,6 +26,10 @@ class CompanyUnitAddressMapper implements CompanyUnitAddressMapperInterface
 
             $setterMethod = sprintf('set%s', ucfirst($key));
 
+            if ($key === 'isDefaultBillingAddress') {
+                $setterMethod = sprintf('set%s', ucfirst(CompanyUnitAddressTransfer::IS_DEFAULT_BILLING));
+            }
+
             if ($key === 'country') {
                 $setterMethod = sprintf('set%s', ucfirst(CompanyUnitAddressTransfer::ISO2_CODE));
             }

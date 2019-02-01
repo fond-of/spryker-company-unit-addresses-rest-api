@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business;
 
+use Generated\Shared\Transfer\CompanyUnitAddressResponseTransfer;
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer;
@@ -88,4 +89,13 @@ interface CompanyUnitAddressesRestApiFacadeInterface
     public function update(
         RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
     ): RestCompanyUnitAddressesResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyUnitAddressResponseTransfer
+     */
+    public function removeDefaultBillingAddress(
+        CompanyUnitAddressTransfer $companyUnitAddressTransfer
+    ): CompanyUnitAddressResponseTransfer;
 }

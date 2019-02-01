@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business;
 
+use Generated\Shared\Transfer\CompanyUnitAddressResponseTransfer;
 use Generated\Shared\Transfer\CompanyUnitAddressTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer;
 use Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer;
@@ -121,5 +122,16 @@ class CompanyUnitAddressesRestApiFacade extends AbstractFacade implements Compan
         return $this->getFactory()
             ->createCompanyUnitAddressWriter()
             ->update($restCompanyUnitAddressesRequestTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyUnitAddressResponseTransfer
+     */
+    public function removeDefaultBillingAddress(
+        CompanyUnitAddressTransfer $companyUnitAddressTransfer
+    ): CompanyUnitAddressResponseTransfer {
+        return $this->getFactory()->createDefaultBillingAddressRemover()->remove($companyUnitAddressTransfer);
     }
 }

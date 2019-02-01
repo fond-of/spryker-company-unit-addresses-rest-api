@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="zed"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\CompanyBusinessUnit\Persistence"
+          package="src.Orm.Zed.CompanyBusinessUnit.Persistence">
+
+    <table name="spy_company_business_unit" phpName="SpyCompanyBusinessUnit">
+        <column name="default_billing_address" type="INTEGER" required="false" defaultValue="null"/>
+    </table>
+
+</database>
