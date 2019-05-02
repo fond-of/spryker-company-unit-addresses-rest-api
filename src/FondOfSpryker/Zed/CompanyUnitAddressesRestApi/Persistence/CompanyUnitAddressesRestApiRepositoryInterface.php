@@ -17,4 +17,16 @@ interface CompanyUnitAddressesRestApiRepositoryInterface
      * @return \Generated\Shared\Transfer\CompanyUnitAddressTransfer|null
      */
     public function findCompanyUnitAddressByExternalReference(string $externalReference): ?CompanyUnitAddressTransfer;
+
+    /**
+     * Specification:
+     *  - Retrieve a company unit address by uuid
+     *
+     * @api
+     *
+     * @param string $uuid
+     *
+     * @return \Generated\Shared\Transfer\CompanyUnitAddressTransfer|null
+     */
+    public function findCompanyUnitAddressByUuid(string $uuid): ?CompanyUnitAddressTransfer;
 }

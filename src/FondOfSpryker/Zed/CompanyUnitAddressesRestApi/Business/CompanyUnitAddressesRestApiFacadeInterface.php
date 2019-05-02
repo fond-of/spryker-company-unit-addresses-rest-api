@@ -82,6 +82,15 @@ interface CompanyUnitAddressesRestApiFacadeInterface
     ): RestCompanyUnitAddressesResponseTransfer;
 
     /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function findCompanyUnitAddressByUuid(
+        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+    ): RestCompanyUnitAddressesResponseTransfer;
+
+    /**
      * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer

@@ -112,11 +112,25 @@ class CompanyUnitAddressesRestApiFacade extends AbstractFacade implements Compan
     }
 
     /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function findCompanyUnitAddressByUuid(
+        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+    ): RestCompanyUnitAddressesResponseTransfer {
+        return $this->getFactory()
+            ->createCompanyUnitAddressReader()
+            ->findCompanyUnitAddressByUuid($restCompanyUnitAddressesRequestAttributesTransfer);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
      */
-    public function update(RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+    public function update(
+        RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
     ): RestCompanyUnitAddressesResponseTransfer
     {
         return $this->getFactory()

@@ -34,6 +34,16 @@ class GatewayController extends AbstractGatewayController
     }
 
     /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function findCompanyUnitAddressByUuidAction(RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer): RestCompanyUnitAddressesResponseTransfer
+    {
+        return $this->getFacade()->findCompanyUnitAddressByUuid($restCompanyUnitAddressesRequestAttributesTransfer);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer

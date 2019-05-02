@@ -9,6 +9,7 @@
     </transfer>
 
     <transfer name="RestCompanyUnitAddressesRequestAttributes">
+        <property name="uuid" type="string"/>
         <property name="externalReference" type="string"/>
         <property name="company" type="RestCompany"/>
         <property name="companyBusinessUnit" type="RestCompanyBusinessUnit"/>

@@ -38,4 +38,33 @@ class CompanyUnitAddressesRestApiRepository extends AbstractRepository implement
 
         return $companyUnitAddressTransfer;
     }
+
+    /**
+     * Specification:
+     *  - Retrieve a company unit address by uuid
+     *
+     * @api
+     *
+     * @param string $uuid
+     *
+     * @return \Generated\Shared\Transfer\CompanyUnitAddressTransfer|null
+     */
+    public function findCompanyUnitAddressByUuid(string $uuid): ?CompanyUnitAddressTransfer
+    {
+        $spyCompanyUnitAddress = $this->getFactory()
+            ->getCompanyUnitAddressPropelQuery()
+            ->filterByUuid($uuid)
+            ->findOne();
+
+        if ($spyCompanyUnitAddress === null) {
+            return null;
+        }
+
+        $companyUnitAddressTransfer = (new CompanyUnitAddressTransfer())->fromArray(
+            $spyCompanyUnitAddress->toArray(),
+            true
+        );
+
+        return $companyUnitAddressTransfer;
+    }
 }

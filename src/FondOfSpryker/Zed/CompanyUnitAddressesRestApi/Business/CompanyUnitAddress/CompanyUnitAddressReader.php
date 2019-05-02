@@ -46,6 +46,25 @@ class CompanyUnitAddressReader implements CompanyUnitAddressReaderInterface
     }
 
     /**
+     * @param \Generated\Shared\Transfer\RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+     *
+     * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
+     */
+    public function findCompanyUnitAddressByUuid(
+        RestCompanyUnitAddressesRequestAttributesTransfer $restCompanyUnitAddressesRequestAttributesTransfer
+    ): RestCompanyUnitAddressesResponseTransfer {
+        $companyUnitAddressTransfer = $this->companyUnitAddressesRestApiRepository->findCompanyUnitAddressByUuid(
+            $restCompanyUnitAddressesRequestAttributesTransfer->getUuid()
+        );
+
+        if ($companyUnitAddressTransfer !== null) {
+            return $this->createCompanyUnitAddressResponseTransfer($companyUnitAddressTransfer);
+        }
+
+        return $this->createCompanyUnitAddressFailedToLoadErrorResponseTransfer();
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\CompanyUnitAddressTransfer $companyUnitAddressTransfer
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
