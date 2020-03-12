@@ -50,7 +50,9 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\CompanyUnitAddressWriterInterface
+     * @throws
+     *
+     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\CompanyUnitAddressMapperInterface
      */
     public function createCompanyUnitAddressMapper(): CompanyUnitAddressMapperInterface
     {
@@ -89,6 +91,8 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @throws
+     *
      * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
      */
     protected function getCompanyUnitAddressFacade(): CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
@@ -97,7 +101,9 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
+     * @throws
+     *
+     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompaniesRestApiFacadeInterface
      */
     protected function getCompaniesRestApiFacade(): CompanyUnitAddressesRestApiToCompaniesRestApiFacadeInterface
     {
@@ -105,6 +111,8 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @throws
+     *
      * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Plugin\CompanyUnitAddressMapperPluginInterface[]
      */
     protected function getCompanyUnitAddressMapperPlugins(): array
@@ -113,6 +121,8 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @throws
+     *
      * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyBusinessUnitsRestApiFacadeInterface
      */
     protected function getCompanyBusinessUnitsRestApiFacade(): CompanyUnitAddressesRestApiToCompanyBusinessUnitsRestApiFacadeInterface
@@ -121,6 +131,8 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @throws
+     *
      * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyBusinessUnitFacadeInterface
      */
     protected function getCompanyBusinessUnitFacade(): CompanyUnitAddressesRestApiToCompanyBusinessUnitFacadeInterface
@@ -129,6 +141,8 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @throws
+     *
      * @return \Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery
      */
     protected function getCompanyBusinessUnitPropelQuery(): SpyCompanyBusinessUnitQuery

@@ -131,8 +131,7 @@ class CompanyUnitAddressesRestApiFacade extends AbstractFacade implements Compan
      */
     public function update(
         RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
-    ): RestCompanyUnitAddressesResponseTransfer
-    {
+    ): RestCompanyUnitAddressesResponseTransfer {
         return $this->getFactory()
             ->createCompanyUnitAddressWriter()
             ->update($restCompanyUnitAddressesRequestTransfer);
@@ -146,6 +145,8 @@ class CompanyUnitAddressesRestApiFacade extends AbstractFacade implements Compan
     public function removeDefaultBillingAddress(
         CompanyUnitAddressTransfer $companyUnitAddressTransfer
     ): CompanyUnitAddressResponseTransfer {
-        return $this->getFactory()->createDefaultBillingAddressRemover()->remove($companyUnitAddressTransfer);
+        return $this->getFactory()
+            ->createDefaultBillingAddressRemover()
+            ->remove($companyUnitAddressTransfer);
     }
 }

@@ -53,9 +53,9 @@ class CompanyUnitAddressesRestApiClient extends AbstractClient implements Compan
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
      */
-    public function update(RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
-    ): RestCompanyUnitAddressesResponseTransfer
-    {
+    public function update(
+        RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+    ): RestCompanyUnitAddressesResponseTransfer {
         return $this->getFactory()
             ->createZedCompanyUnitAddressesRestApiStub()
             ->update($restCompanyUnitAddressesRequestTransfer);

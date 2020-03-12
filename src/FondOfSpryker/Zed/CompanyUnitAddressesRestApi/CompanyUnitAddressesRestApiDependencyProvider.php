@@ -65,7 +65,7 @@ class CompanyUnitAddressesRestApiDependencyProvider extends AbstractBundleDepend
      */
     protected function addCompanyUnitAddressFacade(Container $container): Container
     {
-        $container[static::FACADE_COMPANY_UNIT_ADDRESS] = function (Container $container) {
+        $container[static::FACADE_COMPANY_UNIT_ADDRESS] = static function (Container $container) {
             return new CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeBridge(
                 $container->getLocator()->companyUnitAddress()->facade()
             );
@@ -107,7 +107,7 @@ class CompanyUnitAddressesRestApiDependencyProvider extends AbstractBundleDepend
      */
     protected function addCompaniesRestApiFacade(Container $container): Container
     {
-        $container[static::FACADE_COMPANIES_REST_API] = function (Container $container) {
+        $container[static::FACADE_COMPANIES_REST_API] = static function (Container $container) {
             return new CompanyUnitAddressesRestApiToCompaniesRestApiFacadeBridge(
                 $container->getLocator()->companiesRestApi()->facade()
             );
@@ -123,7 +123,7 @@ class CompanyUnitAddressesRestApiDependencyProvider extends AbstractBundleDepend
      */
     protected function addCompanyBusinessUnitsRestApiFacade(Container $container): Container
     {
-        $container[static::FACADE_COMPANY_BUSINESS_UNITS_REST_API] = function (Container $container) {
+        $container[static::FACADE_COMPANY_BUSINESS_UNITS_REST_API] = static function (Container $container) {
             return new CompanyUnitAddressesRestApiToCompanyBusinessUnitsRestApiFacadeBridge(
                 $container->getLocator()->companyBusinessUnitsRestApi()->facade()
             );
@@ -139,7 +139,7 @@ class CompanyUnitAddressesRestApiDependencyProvider extends AbstractBundleDepend
      */
     protected function addCompanyBusinessUnitFacade(Container $container): Container
     {
-        $container[static::FACADE_COMPANY_BUSINESS_UNIT] = function (Container $container) {
+        $container[static::FACADE_COMPANY_BUSINESS_UNIT] = static function (Container $container) {
             return new CompanyUnitAddressesRestApiToCompanyBusinessUnitFacadeBridge(
                 $container->getLocator()->companyBusinessUnit()->facade()
             );
@@ -155,7 +155,7 @@ class CompanyUnitAddressesRestApiDependencyProvider extends AbstractBundleDepend
      */
     protected function addCompanyUnitAddressPropelQuery(Container $container): Container
     {
-        $container[static::PROPEL_QUERY_COMPANY_UNIT_ADDRESS] = function () {
+        $container[static::PROPEL_QUERY_COMPANY_UNIT_ADDRESS] = static function () {
             return SpyCompanyUnitAddressQuery::create();
         };
 
@@ -169,7 +169,7 @@ class CompanyUnitAddressesRestApiDependencyProvider extends AbstractBundleDepend
      */
     protected function addCompanyBusinessUnitPropelQuery(Container $container): Container
     {
-        $container[static::PROPEL_QUERY_COMPANY_BUSINESS_UNIT] = function () {
+        $container[static::PROPEL_QUERY_COMPANY_BUSINESS_UNIT] = static function () {
             return SpyCompanyBusinessUnitQuery::create();
         };
 
