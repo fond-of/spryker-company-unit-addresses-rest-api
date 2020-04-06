@@ -127,9 +127,9 @@ class CompanyUnitAddressWriter implements CompanyUnitAddressWriterInterface
      *
      * @return \Generated\Shared\Transfer\RestCompanyUnitAddressesResponseTransfer
      */
-    public function update(RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
-    ): RestCompanyUnitAddressesResponseTransfer
-    {
+    public function update(
+        RestCompanyUnitAddressesRequestTransfer $restCompanyUnitAddressesRequestTransfer
+    ): RestCompanyUnitAddressesResponseTransfer {
         $companyUnitAddressTransfer = $this->companyUnitAddressesRestApiRepository
             ->findCompanyUnitAddressByExternalReference($restCompanyUnitAddressesRequestTransfer->getId());
 

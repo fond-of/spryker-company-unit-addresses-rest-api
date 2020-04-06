@@ -56,4 +56,12 @@
         <property name="errors" type="RestCompanyUnitAddressesError[]" singular="error" />
         <property name="restCompanyUnitAddressesResponseAttributes" type="RestCompanyUnitAddressesResponseAttributes" />
     </transfer>
+
+    <transfer name="RestCompanyBusinessUnit">
+        <property name="externalReference" type="string"/>
+    </transfer>
+
+    <transfer name="RestCompany">
+        <property name="externalReference" type="string"/>
+    </transfer>
 </transfers>

@@ -50,7 +50,7 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\CompanyUnitAddressWriterInterface
+     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Business\CompanyUnitAddress\CompanyUnitAddressMapperInterface
      */
     public function createCompanyUnitAddressMapper(): CompanyUnitAddressMapperInterface
     {
@@ -97,7 +97,7 @@ class CompanyUnitAddressesRestApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompanyUnitAddressFacadeInterface
+     * @return \FondOfSpryker\Zed\CompanyUnitAddressesRestApi\Dependency\Facade\CompanyUnitAddressesRestApiToCompaniesRestApiFacadeInterface
      */
     protected function getCompaniesRestApiFacade(): CompanyUnitAddressesRestApiToCompaniesRestApiFacadeInterface
     {
