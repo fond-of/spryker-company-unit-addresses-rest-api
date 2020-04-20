@@ -15,7 +15,7 @@
   "require": {
     "php": ">=7.1",
     "spryker/company-unit-address": "^1.6.0",
-    "fond-of-spryker/companies-rest-api": "dev-master",
+    "fond-of-spryker/companies-rest-api": "dev-spryker_upgrade",
     "fond-of-spryker/company-business-units-rest-api": "dev-master",
     "spryker/glue-application": "^1.0.0"
   },
